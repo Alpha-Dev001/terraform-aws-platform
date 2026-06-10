@@ -9,6 +9,26 @@ Infrastructure as Code project built using Terraform.
 - Support multiple environments
 - Prepare for AWS deployments
 
+## Architecture
+
+- Networking Module
+- Security Module
+- Compute Module
+- Storage Module
+
+## Environments
+
+- Development
+- Staging
+- Production
+
+## Usage
+
+terraform init
+terraform plan
+terraform apply
+
+
 ## Project Structure
 
 terraform-aws-platform/
@@ -60,3 +80,10 @@ terraform-aws-platform/
 └── docs/
     ├── architecture.md
     └── learning-notes.md
+
+
+## Future Improvements
+
+- CI/CD
+- Kubernetes
+- Monitoring
