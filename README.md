@@ -1,6 +1,6 @@
 # terraform-aws-platform
 
-A learning project: a production-grade AWS platform structure, runnable locally
+A production-grade AWS platform structure, runnable locally
 via [LocalStack](https://localstack.cloud/) — no AWS account or credit card needed.
 
 ## Quick Start
