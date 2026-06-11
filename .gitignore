@@ -1,20 +1,18 @@
-# Terraform
-.terraform/
+# Terraform state — contains sensitive data, never commit
 *.tfstate
-*.tfstate.*
-crash.log
+*.tfstate.backup
+*.tfstate.lock.info
 
-# Variables
-*.tfvars
-*.tfvars.json
-
-# Override files
+# Local config overrides
+*.tfvars.local
 override.tf
 override.tf.json
+*_override.tf
 
-# IDE
-.vscode/
+# Provider plugins — large binaries, re-downloaded by terraform init
+.terraform/
+.terraform.lock.hcl
 
-# OS
-.DS_Store
-Thumbs.db
+# Crash logs
+crash.log
+crash.*.log

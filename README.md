@@ -1,89 +1,53 @@
-# Terraform AWS Platform
+# terraform-aws-platform
 
-Infrastructure as Code project built using Terraform.
+A learning project: a production-grade AWS platform structure, runnable locally
+via [LocalStack](https://localstack.cloud/) — no AWS account or credit card needed.
 
-## Goals
+## Quick Start
 
-- Learn Terraform professionally
-- Build reusable modules
-- Support multiple environments
-- Prepare for AWS deployments
+```bash
+# 1. Start LocalStack (requires Docker)
+docker run --rm -d -p 4566:4566 \
+  -e SERVICES=ec2,s3,iam,sts,elbv2,autoscaling \
+  localstack/localstack
 
-## Architecture
-
-- Networking Module
-- Security Module
-- Compute Module
-- Storage Module
-
-## Environments
-
-- Development
-- Staging
-- Production
-
-## Usage
-
+# 2. Deploy the dev environment
+cd environments/dev
 terraform init
 terraform plan
 terraform apply
 
+# 3. See what was created
+terraform output
+
+# 4. Clean up
+terraform destroy
+```
 
 ## Project Structure
 
+```
 terraform-aws-platform/
-│
-├── README.md
-├── .gitignore
-├── versions.tf
-├── providers.tf
-├── variables.tf
-├── outputs.tf
-│
-├── environments/
-│   ├── dev/
-│   │   ├── main.tf
-│   │   ├── terraform.tfvars
-│   │   └── outputs.tf
-│   │
+├── environments/          # One folder per environment
+│   ├── dev/               # terraform apply runs here
 │   ├── staging/
-│   │   ├── main.tf
-│   │   ├── terraform.tfvars
-│   │   └── outputs.tf
-│   │
 │   └── prod/
-│       ├── main.tf
-│       ├── terraform.tfvars
-│       └── outputs.tf
-│
-├── modules/
-│   ├── networking/
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   └── outputs.tf
-│   │
-│   ├── security/
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   └── outputs.tf
-│   │
-│   ├── compute/
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   └── outputs.tf
-│   │
-│   └── storage/
-│       ├── main.tf
-│       ├── variables.tf
-│       └── outputs.tf
-│
+├── modules/               # Reusable building blocks
+│   ├── networking/        # VPC, subnets, routing
+│   ├── security/          # Security groups, IAM
+│   ├── compute/           # EC2, ASG, ALB
+│   └── storage/           # S3
 └── docs/
-    ├── architecture.md
-    └── learning-notes.md
+    ├── architecture.md    # System design
+    └── learning-notes.md  # Terraform concept explanations
+```
 
+## Prerequisites
 
-## Future Improvements
+- [Terraform](https://developer.hashicorp.com/terraform/downloads) >= 1.5
+- [Docker](https://docs.docker.com/get-docker/) (for LocalStack)
 
-- CI/CD
-- Kubernetes
-- Monitoring
+## Docs
+
+- [Architecture](docs/architecture.md)
+- [Learning Notes](docs/learning-notes.md) 
