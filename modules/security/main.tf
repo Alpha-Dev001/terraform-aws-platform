@@ -56,7 +56,7 @@ resource "aws_security_group" "web" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [var.vpc_cidr]   # only IPs inside the VPC can SSH
+    cidr_blocks = [var.vpc_cidr]   
   }
 
   # OUTBOUND: allow all (servers need to pull packages, send logs, etc.)

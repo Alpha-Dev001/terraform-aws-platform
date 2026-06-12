@@ -1,6 +1,6 @@
 # ── 1. THE S3 BUCKET 
 resource "random_id" "bucket_suffix" {
-  byte_length = 4   # produces an 8-character hex string
+  byte_length = 4   
 }
 
 resource "aws_s3_bucket" "app" {
