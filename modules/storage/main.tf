@@ -12,8 +12,6 @@ resource "aws_s3_bucket" "app" {
 }
 
 # ── 2. BLOCK ALL PUBLIC ACCESS 
-# By default, S3 buckets are private. This resource makes it explicit
-# and prevents any accidental public exposure — a common security mistake.
 resource "aws_s3_bucket_public_access_block" "app" {
   bucket = aws_s3_bucket.app.id
 

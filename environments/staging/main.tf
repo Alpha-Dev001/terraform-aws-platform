@@ -37,8 +37,6 @@ module "networking" {
 }
 
 # ── SECURITY 
-# Notice: vpc_id and vpc_cidr come FROM the networking module output above.
-# Terraform automatically resolves this dependency and creates networking first.
 module "security" {
   source = "../../modules/security"
 

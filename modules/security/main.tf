@@ -73,7 +73,7 @@ resource "aws_security_group" "web" {
   })
 }
 
-# ── 3. IAM ROLE FOR EC2 ───────────────────────────────────────────────────────
+# ── 3. IAM ROLE FOR EC2 
 
 # The trust policy says: "EC2 service is allowed to assume this role"
 resource "aws_iam_role" "ec2_role" {

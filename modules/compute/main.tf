@@ -84,9 +84,7 @@ resource "aws_lb" "web" {
   tags = var.tags
 }
 
-# ── 5. TARGET GROUP ───────────────────────────────────────────────────────────
-# A Target Group is the list of EC2 instances the ALB can send traffic to.
-# The ALB performs health checks — if an instance fails, it's removed.
+# ── 5. TARGET GROUP 
 resource "aws_lb_target_group" "web" {
   name     = "${var.project_name}-${var.environment}-tg"
   port     = 80
@@ -101,9 +99,7 @@ resource "aws_lb_target_group" "web" {
   }
 }
 
-# ── 6. LISTENER ───────────────────────────────────────────────────────────────
-# The Listener is the rule: "when traffic arrives on port 80, forward it
-# to the target group".
+# ── 6. LISTENER
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.web.arn
   port              = 80

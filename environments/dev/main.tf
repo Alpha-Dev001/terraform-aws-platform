@@ -58,8 +58,7 @@ module "storage" {
   tags              = local.common_tags
 }
 
-# ── COMPUTE ───────────────────────────────────────────────────────────────────
-# This module depends on ALL other modules — it receives outputs from each.
+# ── COMPUTE 
 module "compute" {
   source = "../../modules/compute"
 
@@ -77,9 +76,7 @@ module "compute" {
   tags                = local.common_tags
 }
 
-# ── LOCAL VALUES ──────────────────────────────────────────────────────────────
-# Locals are computed values you can reuse throughout this file.
-# Here we build a standard set of tags to apply to every resource.
+# ── LOCAL VALUES
 locals {
   common_tags = merge(var.tags, {
     Project     = var.project_name

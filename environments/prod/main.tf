@@ -58,7 +58,6 @@ module "storage" {
 }
 
 # ── COMPUTE 
-# This module depends on ALL other modules — it receives outputs from each.
 module "compute" {
   source = "../../modules/compute"
 
@@ -77,8 +76,6 @@ module "compute" {
 }
 
 # ── LOCAL VALUES 
-# Locals are computed values you can reuse throughout this file.
-# Here we build a standard set of tags to apply to every resource.
 locals {
   common_tags = merge(var.tags, {
     Project     = var.project_name

@@ -9,8 +9,7 @@ resource "aws_vpc" "main" {
   })
 }
 
-# ── 2. INTERNET GATEWAY ───────────────────────────────────────────────────────
-# Without this, NOTHING in the VPC can reach the internet (and vice-versa).
+# ── 2. INTERNET GATEWAY 
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id   # attach the gateway to our VPC
 
@@ -19,9 +18,7 @@ resource "aws_internet_gateway" "main" {
   })
 }
 
-# ── 3. PUBLIC SUBNETS ─────────────────────────────────────────────────────────
-# We create one public subnet per entry in var.public_subnet_cidrs.
-# `count` is a Terraform meta-argument that loops the resource block.
+# ── 3. PUBLIC SUBNETS 
 resource "aws_subnet" "public" {
   count = length(var.public_subnet_cidrs)   # creates N copies of this resource
 
@@ -51,9 +48,7 @@ resource "aws_subnet" "private" {
   })
 }
 
-# ── 5. ROUTE TABLE FOR PUBLIC SUBNETS 
-# A route table is a list of routing rules:
-#   "0.0.0.0/0 → internet_gateway"  means "all unknown traffic → internet"
+# ── 5. ROUTE TABLE FOR PUBLIC SUBNETS
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 
