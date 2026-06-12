@@ -39,7 +39,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "app" {
     status = "Enabled"
 
     filter {
-      prefix = "logs/"   # only applies to objects whose key starts with "logs/"
+      prefix = "logs/"   
     }
 
     expiration {

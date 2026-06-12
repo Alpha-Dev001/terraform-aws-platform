@@ -45,13 +45,13 @@ resource "aws_launch_template" "web" {
   }
 }
 
-# ── 3. AUTO SCALING GROUP ─────────────────────────────────────────────────────
+# ── 3. AUTO SCALING GROUP 
 resource "aws_autoscaling_group" "web" {
   name                = "${var.project_name}-${var.environment}-asg"
   min_size            = var.min_instances
   max_size            = var.max_instances
-  desired_capacity    = var.min_instances   # start with the minimum
-  vpc_zone_identifier = var.private_subnet_ids  # launch instances in private subnets
+  desired_capacity    = var.min_instances   
+  vpc_zone_identifier = var.private_subnet_ids  
 
   # Connect the ASG to the Launch Template
   launch_template {
@@ -64,7 +64,7 @@ resource "aws_autoscaling_group" "web" {
 
   # Replace an instance only after the new one is healthy (zero-downtime deploys)
   health_check_type         = "ELB"
-  health_check_grace_period = 300   # wait 5 min for the instance to boot
+  health_check_grace_period = 300  
 
   tag {
     key                 = "Name"
@@ -73,13 +73,13 @@ resource "aws_autoscaling_group" "web" {
   }
 }
 
-# ── 4. APPLICATION LOAD BALANCER ──────────────────────────────────────────────
+# ── 4. APPLICATION LOAD BALANCER 
 resource "aws_lb" "web" {
   name               = "${var.project_name}-${var.environment}-alb"
-  internal           = false                    # internet-facing
+  internal           = false                    
   load_balancer_type = "application"
   security_groups    = [var.alb_sg_id]
-  subnets            = var.public_subnet_ids    # ALB lives in PUBLIC subnets
+  subnets            = var.public_subnet_ids    
 
   tags = var.tags
 }
@@ -93,9 +93,9 @@ resource "aws_lb_target_group" "web" {
 
   health_check {
     path                = "/"
-    healthy_threshold   = 2   # 2 passing checks = healthy
-    unhealthy_threshold = 3   # 3 failing checks = unhealthy
-    interval            = 30  # check every 30 seconds
+    healthy_threshold   = 2  
+    unhealthy_threshold = 3   
+    interval            = 30  
   }
 }
 

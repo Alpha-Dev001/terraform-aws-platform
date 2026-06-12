@@ -67,8 +67,7 @@ variable "enable_versioning" {
   default     = false
 }
 
-# ── Tags 
-# In real AWS, tags let you filter costs and ownership in the console.
+# ── Tags
 
 variable "tags" {
   description = "Map of tags applied to every resource"
