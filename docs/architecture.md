@@ -7,13 +7,13 @@ with separate isolated environments for dev, staging, and production.
 
 ```
                         ┌─────────────────────────────────────────┐
-                        │              AWS / LocalStack            │
-                        │                                          │
+                        │              AWS / LocalStack           │
+                        │                                         │
   Internet Traffic      │   ┌──────────┐     ┌─────────────────┐  │
   ──────────────────────┼──►│   ALB    │────►│ Auto Scaling    │  │
                         │   │ (public) │     │ Group (private) │  │
                         │   └──────────┘     └────────┬────────┘  │
-                        │                             │            │
+                        │                             │           │
                         │                    ┌────────▼────────┐  │
                         │                    │   S3 Bucket     │  │
                         │                    │ (app storage)   │  │
