@@ -20,7 +20,6 @@ with separate isolated environments for dev, staging, and production.
                         │                    └─────────────────┘  │
                         └─────────────────────────────────────────┘
 ```
-
 ## Module Responsibilities
 
 | Module      | Creates                                        | Why                                      |
